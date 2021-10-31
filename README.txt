@@ -27,7 +27,7 @@ status:             indicator of event (1=case, 0=censored)
 agegr2:             dummy for age group2 (40-49 years, reference: 30-39 years)
 agegr3:             dummy for age group3 (50-59 years, reference: 30-39 years)
 agegr4:             dummy for age group4 (60-69 years, reference: 30-39 years)
-gender:             gender indicator (1= female, 0=male) 
+gender:             gender indicator (0= female, 1=male) 
 smoke:              cigarette smoking indicator (1=yes, 0=no)
 alcohol:            alcohol comsuption indicator (1=yes, 0=no)
 HBV:                natural logarithm of HBV viral load
