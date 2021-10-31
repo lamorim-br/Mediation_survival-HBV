@@ -12,9 +12,10 @@ Replication Data for Analyses in the manuscript "Causal mediation for survival d
 File list
 -----------------------------------
 
-HBV_mediation_survival.R        R file for estimating NIE and NDE (Tables 4 & 5)
-HCV_responsiveness_survival.R   R file for generating figures with responsiveness measures (Figures 4 & 5)
-hcvhbv_liver.txt                HCV (parcial) data set from Huang and Yang* (2017)    
+Causal mediation-survival models (Tables 4-5)-CIs-main.R        R file for reading data set and estimating NIE and NDE (Tables 4 & 5)
+Causal-NIE-NDE.R                                                R functions used for estimation of NIE and NDE 
+HCV_responsiveness_survival.R                                   R file for generating figures with responsiveness measures (Figures 4 & 5)
+hcvhbv_liver.txt                                                HCV (parcial) data set from Huang and Yang* (2017)    
 
 * Link for download of complete data set provided by Huang & Yang (2017)
 
