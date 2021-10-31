@@ -14,7 +14,7 @@ File list
 
 HBV_mediation_survival.R        R file for estimating NIE and NDE (Tables 4 & 5)
 HCV_responsiveness_survival.R   R file for generating figures with responsiveness measures (Figures 4 & 5)
-hcvhbvhcc_survmed2.txt          HCV (parcial) data set from Huang and Yang* (2017)    
+hcvhbv_liver.txt                HCV (parcial) data set from Huang and Yang* (2017)    
 
 * Link for download of complete data set provided by Huang & Yang (2017)
 
@@ -22,16 +22,16 @@ hcvhbvhcc_survmed2.txt          HCV (parcial) data set from Huang and Yang* (201
 Data dictionary
 -----------------------------------
 
-hcc_time:           time to liver cancer diagnosis
-hcc_case:           indicator of event (1=case, 0=censored)
+hcc_time:           time to liver cancer diagnosis (in days)
+status:             indicator of event (1=case, 0=censored)
 agegr2:             dummy for age group2 (40-49 years, reference: 30-39 years)
 agegr3:             dummy for age group3 (50-59 years, reference: 30-39 years)
 agegr4:             dummy for age group4 (60-69 years, reference: 30-39 years)
 gender:             gender indicator (1= female, 0=male) 
 smoke:              cigarette smoking indicator (1=yes, 0=no)
 alcohol:            alcohol comsuption indicator (1=yes, 0=no)
-hbv.log:            natural logarithm of HBV viral load
-hbc:                HCV viral load indicator (1=detected, 0=non detected)
+HBV:                natural logarithm of HBV viral load
+HCV.cat             HCV viral load indicator (1=detected, 0=non detected)
 
 ----------------------------------
 Sources of proprietary data
