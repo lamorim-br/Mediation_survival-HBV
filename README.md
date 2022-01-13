@@ -31,9 +31,13 @@ GOAL:  Estimate NID and NIE using mediation with survival models
 --------------------------------------------------------
 
 rm(list=ls())
+
 library(survival)
+
 library(timereg)
+
 library(data.table)
+
 library(MASS)
 
 -----------------------------------
