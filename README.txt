@@ -31,8 +31,8 @@ agegr4:             dummy for age group4 (60-69 years, reference: 30-39 years)
 gender:             gender indicator (0= female, 1=male) 
 smoke:              cigarette smoking indicator (1=yes, 0=no)
 alcohol:            alcohol comsuption indicator (1=yes, 0=no)
-HBV:                natural logarithm of HBV viral load
 HCV.cat             HCV viral load indicator (1=detected, 0=non detected)
+HBV:                natural logarithm of HBV viral load
 
 ----------------------------------
 Sources of proprietary data
