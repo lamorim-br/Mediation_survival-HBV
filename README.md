@@ -146,5 +146,78 @@ c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
     _R file for generating figures with responsiveness measures (Figures 4 & 5) in Taddeo & Amorim (2022)._
 
 
+#########################################################
+DATA*: hcvhbv_liver.txt
+CODE:  Responsiveness_AFT_Figure4.R
+GOAL:  Estimate NIR and NIR using AFT models
+         ***   Varying mediation model ***
+########################################################
+
+ * Link for download of complete data set provided by Huang & Yang (2017)
+
+ _R code for the main analyses in Section 5.2 (Figure 4) (Taddeo & Amorim, 2022)_
+ 
+ --------------------------------------------------------
+  **Required packages**
+--------------------------------------------------------
+
+rm(list=ls())
+library(survival)
+library(timereg)
+library(data.table)
+library(MASS)
+
+-----------------------------------
+  **Reading data set**
+-----------------------------------
+dados <- read.table("hcvhbv_liver.txt", header = TRUE)
+head(dados)
+attach(dados)
+
+-----------------------------------
+**Specifying covariate set**
+-----------------------------------
+qq <- quantile(dados$logc[dados$logc>0])
+dd <- qq["50%"] - qq["25%"]
+dados$logc <- dados$logc / dd
+
+X <- dados[,c("agegp2", "agegp3", "agegp4", "gender", "smoke", "alcohol")]
+p <- ncol(X)
+X <- setDT(X)[, .N, by = c(names(X))]
+Prob <- X$N / sum(X$N)
+X <- cbind(X, Prob)
 
 
+----------------------------------------------------------------------------------
+**R functions to estimate NDR e NIR for varying mediator models for AFT**
+-----------------------------------------------------------------------------------
+source("Responsiveness-AFT.R")
+
+
+----------------------------------------------------------------------------------------------------
+### NDR and NIR for varying mediator model using AFT for outcome
+----------------------------------------------------------------------------------------------------
+a <- seq(0,20,length.out=1000)
+
+nat.sen.gama.log <- cox.aft.sen(mediator="gamma", method="aft", link="log", a=a)
+nat.sen.gama.inv <- cox.aft.sen(mediator="gamma", method="aft", link="inverse", a=a)
+nat.sen.gaus <- cox.aft.sen(mediator="gaussian", method="aft", link="identity", a=a)
+
+
+----------------------------------------------------------------------------------------------------------
+### Figure 4 A: NDR
+---------------------------------------------------------------------------------------------------------
+plot(a, nat.sen.gama.log$NDS, type="l", 
+     xlab="log of HCV viral load", ylab="NDS",
+     lwd=2, cex.axis=1.3, cex.lab=1.3)
+lines(a, nat.sen.gama.inv$NDS, lty="dashed", lwd=2)
+lines(a, nat.sen.gaus$NDS, lty="dotted", lwd=3)
+
+----------------------------------------------------------------------------------------------------------
+### Figure 4 B: NIR
+---------------------------------------------------------------------------------------------------------
+plot(a, nat.sen.gama.log$NIS, type="l", 
+     xlab="log of HCV viral load", ylab="NIS",
+     ylim=c(0,8), lwd=2, cex.axis=1.3, cex.lab=1.3)
+lines(a, nat.sen.gama.inv$NIS, lty="dashed", lwd=2)
+lines(a, nat.sen.gaus$NIS, lty="dotted", lwd=3)
