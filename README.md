@@ -16,10 +16,14 @@ R codes for the analyses presented in Section 5.1 of the paper can be found unde
     _R file for reading data set and estimating NID and NIE (Tables 4 & 5) in Taddeo & Amorim (2022)._
 
 #########################################################
+
 DATA*: hcvhbv_liver.txt
+
 CODE:  causal_effects_mediation_CI.R
+
 GOAL:  Estimate NID and NIE using mediation with survival models
-       ***   Point and intervalar estimates ***
+
+***   Point and intervalar estimates ***
 ########################################################
 
  * Link for download of complete data set provided by Huang & Yang (2017)
@@ -77,17 +81,23 @@ source("Causal-NIE-NDE.R")
 ---------------------------------------------------------------------------------------------------------
 #### AFT
 nat.effects <- cox.aft.eff(mediator="gaussian", method="aft", link="identity")
+
 c(nat.effects$NDE,nat.effects$DE.lo,nat.effects$DE.up)
+
 c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 
 ####  Cox
 nat.effects <- cox.aft.eff(mediator="gaussian", method="cox", link="identity")
+
 c(exp(nat.effects$NDE),exp(nat.effects$DE.lo),exp(nat.effects$DE.up))
+
 c(exp(nat.effects$NIE),exp(nat.effects$IE.lo),exp(nat.effects$IE.up))
 
 ####  Aalen
 nat.effects <- aalen.eff(mediator="gaussian", link="identity")
+
 c(nat.effects$NDE,nat.effects$DE.lo,nat.effects$DE.up)
+
 c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -95,17 +105,23 @@ c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 -------------------------------------------------------------------------------------------------------------------------------
 ####  AFT
 nat.effects <- cox.aft.eff(mediator="gamma", method="aft", link="log")
+
 c(nat.effects$NDE,nat.effects$DE.lo,nat.effects$DE.up)
+
 c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 
 ####  Cox
 nat.effects <- cox.aft.eff(mediator="gamma", method="cox", link="log")
+
 c(exp(nat.effects$NDE),exp(nat.effects$DE.lo),exp(nat.effects$DE.up))
+
 c(exp(nat.effects$NIE),exp(nat.effects$IE.lo),exp(nat.effects$IE.up))
 
 ####  Aalen (it can take some minutes to run)
 nat.effects <- aalen.eff(mediator="gamma", link="log")
+
 c(nat.effects$NDE,nat.effects$DE.lo,nat.effects$DE.up)
+
 c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -113,17 +129,23 @@ c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 ------------------------------------------------------------------------------------------------------------------------
 ####  AFT
 nat.effects <- cox.aft.eff(mediator="gamma", method="aft", link="inverse")
+
 c(nat.effects$NDE,nat.effects$DE.lo,nat.effects$DE.up)
+
 c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 
 ####  Cox
 nat.effects <- cox.aft.eff(mediator="gamma", method="cox", link="inverse")
+
 c(exp(nat.effects$NDE),exp(nat.effects$DE.lo),exp(nat.effects$DE.up))
+
 c(exp(nat.effects$NIE),exp(nat.effects$IE.lo),exp(nat.effects$IE.up))
 
 ####  Aalen (it can take some minutes to run)
 nat.effects <- aalen.eff(mediator="gamma", link="inverse")
+
 c(nat.effects$NDE,nat.effects$DE.lo,nat.effects$DE.up)
+
 c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 
 ---------------------------------------------------------------------------------------------------------------------
@@ -132,7 +154,9 @@ c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 ---------------------------------------------------------------------------------------------------------------------
 ####  AFT
 nat.effects <- cox.aft.eff(mediator="gamma", method="aft", link="log",x=c(0,0,1,1,1,1))
+
 c(nat.effects$NDE,nat.effects$DE.lo,nat.effects$DE.up)
+
 c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 
 
@@ -141,6 +165,7 @@ c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 ------------------------
 #(1) AFT, Cox and Aalen estimates using Gamma GLM for mediator are conditional on X
     (here X = 0. This setup can be changed in line 158 and 250)
+
 #(2) NIE in Aalen model with Gamma GLM for mediator is time-dependent. An approximated value is presented.
 
 
