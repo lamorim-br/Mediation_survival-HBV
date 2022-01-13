@@ -40,16 +40,22 @@ library(MASS)
   **Reading data set**
 -----------------------------------
 dados <- read.table("hcvhbv_liver.txt", header = TRUE)
+
 head(dados)
+
 attach(dados)
 
 -----------------------------------
 **Specifying covariate set**
 -----------------------------------
 X <- dados[,c("agegp2", "agegp3", "agegp4", "gender", "smoke", "alcohol")]
+
 p <- ncol(X)
+
 X <- setDT(X)[, .N, by = c(names(X))]
+
 Prob <- X$N / sum(X$N)
+
 X <- cbind(X, Prob)
 
 -----------------------------------
