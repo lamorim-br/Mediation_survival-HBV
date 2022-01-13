@@ -132,3 +132,19 @@ c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
 #(1) AFT, Cox and Aalen estimates using Gamma GLM for mediator are conditional on X
     (here X = 0. This setup can be changed in line 158 and 250)
 #(2) NIE in Aalen model with Gamma GLM for mediator is time-dependent. An approximated value is presented.
+
+
+
+------------------------------------------------------
+------------------------------------------------------
+# Topic: Responsiveness-causal-measure
+
+------------------------------------------------------
+**HBV_responsiveness-survival.R**
+-------------------------------------------------------
+
+    _R file for generating figures with responsiveness measures (Figures 4 & 5) in Taddeo & Amorim (2022)._
+
+
+
+
