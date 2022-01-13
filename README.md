@@ -5,8 +5,9 @@ Information about dataset can be found at README.txt.
 
 R codes for the analyses presented in Section 5.1 of the paper can be found under the topic "Causal-mediation-in-survival analysis", while R codes for the analyses as in Section 5.2 can be found under the topic "Responsiveness-causal-measure".
 
-
-Topic: Causal-mediation-in-survival analysis
+------------------------------------------------------
+------------------------------------------------------
+# Topic: Causal-mediation-in-survival analysis
 
 ------------------------------------------------------
 **Causal mediation-survival models (Tables 4-5)-CIs-main.R**
