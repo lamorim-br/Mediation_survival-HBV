@@ -33,6 +33,7 @@ smoke:              cigarette smoking indicator (1=yes, 0=no)
 alcohol:            alcohol comsuption indicator (1=yes, 0=no)
 HCV.cat             HCV viral load indicator (1=detected, 0=non detected)
 HBV:                natural logarithm of HBV viral load
+log.HCV             logarithm of HCV viral load 
 
 ----------------------------------
 Sources of proprietary data
