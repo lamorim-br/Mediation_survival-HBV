@@ -15,7 +15,9 @@ File list
 Causal mediation-survival models (Tables 4-5)-CIs-main.R        R file for reading data set and estimating NIE and NDE (Tables 4 & 5)
 Causal-NIE-NDE.R                                                R functions used for estimation of NIE and NDE 
 HCV_responsiveness_survival.R                                   R file for generating figures with responsiveness measures (Figures 4 & 5)
+Responsiveness-AFT.R                                            R functions used for estimation of NIR and NDR 
 hcvhbv_liver.txt                                                HCV (parcial) data set from Huang and Yang* (2017)    
+
 
 * Link for download of complete data set provided by Huang & Yang (2017)
 
