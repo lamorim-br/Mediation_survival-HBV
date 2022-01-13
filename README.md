@@ -15,7 +15,7 @@ R codes for the analyses presented in Section 5.1 of the paper can be found unde
 
     _R file for reading data set and estimating NID and NIE (Tables 4 & 5) in Taddeo & Amorim (2022)._
 
-#########################################################
+#########################################################################################
 
 DATA*: hcvhbv_liver.txt
 
@@ -24,7 +24,8 @@ CODE:  causal_effects_mediation_CI.R
 GOAL:  Estimate NID and NIE using mediation with survival models
 
 ***   Point and intervalar estimates ***
-########################################################
+
+########################################################################################
 
  * Link for download of complete data set provided by Huang & Yang (2017)
 
