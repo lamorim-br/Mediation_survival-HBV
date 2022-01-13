@@ -16,7 +16,7 @@ R codes for the analyses presented in Section 5.1 of the paper can be found unde
 
     _R file for reading data set and estimating NID and NIE (Tables 4 & 5) in Taddeo & Amorim (2022)._
 
-#########################################################################################
+############################################################################
 
 DATA*: hcvhbv_liver.txt
 
@@ -26,7 +26,7 @@ GOAL:  Estimate NID and NIE using mediation with survival models
 
 ***   Point and intervalar estimates ***
 
-########################################################################################
+#############################################################################
 
  * Link for download of complete data set provided by Huang & Yang (2017)
 
@@ -183,7 +183,7 @@ c(nat.effects$NIE,nat.effects$IE.lo,nat.effects$IE.up)
     _R file for generating figures with responsiveness measures (Figures 4 & 5) in Taddeo & Amorim (2022)._
 
 
-#########################################################################################
+###########################################################################
 
 DATA*: hcvhbv_liver.txt
 
@@ -193,7 +193,7 @@ GOAL:  Estimate NIR and NIR using AFT models
 
 ***   Varying mediation model ***
 
-#########################################################################################
+###########################################################################
 
  * Link for download of complete data set provided by Huang & Yang (2017)
 
