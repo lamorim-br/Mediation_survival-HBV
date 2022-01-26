@@ -189,7 +189,7 @@ DATA*: hcvhbv_liver.txt
 
 CODE:  Responsiveness_AFT_Figure4.R
 
-GOAL:  Estimate NIR and NIR using AFT models
+GOAL:  Estimate NDR and NIR using AFT models
 
 ***   Varying mediation model ***
 
@@ -281,3 +281,98 @@ plot(a, nat.sen.gama.log$NIS, type="l",
 lines(a, nat.sen.gama.inv$NIS, lty="dashed", lwd=2)
 
 lines(a, nat.sen.gaus$NIS, lty="dotted", lwd=3)
+
+
+###########################################################################
+###########################################################################
+
+DATA*: hcvhbv_liver.txt
+
+CODE:  Responsiveness_Aalen_Figure5.R
+
+GOAL:  Estimate NIR and NDR using Aalen models
+
+***   Varying mediation model ***
+
+###########################################################################
+
+ * Link for download of complete data set provided by Huang & Yang (2017)
+
+ _R code for the main analyses in Section 5.2 (Figure 5) (Taddeo & Amorim, 2022)_
+ 
+ --------------------------------------------------------
+  **Required packages**
+--------------------------------------------------------
+
+rm(list=ls())
+
+library(survival)
+
+library(timereg)
+
+library(data.table)
+
+library(MASS)
+
+-----------------------------------
+  **Reading data set**
+-----------------------------------
+dados <- read.table("hcvhbv_liver.txt", header = TRUE)
+
+head(dados)
+
+attach(dados)
+
+-----------------------------------
+**Specifying covariate set**
+-----------------------------------
+qq <- quantile(dados$logc[dados$logc>0])
+
+dd <- qq["50%"] - qq["25%"]
+
+dados$logc <- dados$logc / dd
+
+X <- dados[,c("agegp2", "agegp3", "agegp4", "gender", "smoke", "alcohol")]
+
+p <- ncol(X)
+
+X <- setDT(X)[, .N, by = c(names(X))]
+
+Prob <- X$N / sum(X$N)
+
+X <- cbind(X, Prob)
+
+
+----------------------------------------------------------------------------------
+**R functions to estimate NDR e NIR for varying mediator models for AFT**
+-----------------------------------------------------------------------------------
+source("Responsiveness-Aalen.R")
+
+
+----------------------------------------------------------------------------------------------------
+### NDR and NIR for varying mediator model using AFT for outcome
+----------------------------------------------------------------------------------------------------
+a <- seq(0,20,length.out=20)
+
+----------------------------------------------------------------------------------------------------------
+### Figure 5 A: NIR using gamma mediator model, with log link function
+---------------------------------------------------------------------------------------------------------
+nat.sen <- aalen.sen(mediator="gamma", link="log", a=a, x=rep(0,p), 
+                     grid.lo=0, grid.up=20, by=2, approximation=FALSE)
+
+persp(a, seq(0,20,by=2), 1000*nat.sen$NIS, 
+      theta=25, phi=10, r=15, d=.3, ticktype="detailed", zlab="\n\nNIS (x 1,000)", 
+      ylab="\nYear", xlab="\nlog of HCV viral load", 
+      zlim=c(-2.3,-0.5), cex.axis=.75, shade=.5, nticks=4)
+
+----------------------------------------------------------------------------------------------------------
+### Figure 5 B: NIR using gamma mediator model, with inverse link function
+---------------------------------------------------------------------------------------------------------
+nat.sen <- aalen.sen(mediator="gamma", link="inverse", a=a, x=rep(0,p),
+          grid.lo=0, grid.up=20, by=2, approximation=FALSE)
+
+
+persp(a, seq(0,20,by=2), 1000*nat.sen$NIS, 
+      theta=25, phi=10, r=15, d=.3, ticktype="detailed", zlab="\n\nNIS (x 1,000)", 
+      ylab="\nYear", xlab="\nlog of HCV viral load", 
+      zlim=c(-2.3,-0.5), cex.axis=.75, shade=.5, nticks=4)
