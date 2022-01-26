@@ -300,49 +300,8 @@ GOAL:  Estimate NIR and NDR using Aalen models
 
  _R code for the main analyses in Section 5.2 (Figure 5) (Taddeo & Amorim, 2022)_
  
- --------------------------------------------------------
-  **Required packages**
---------------------------------------------------------
-
-rm(list=ls())
-
-library(survival)
-
-library(timereg)
-
-library(data.table)
-
-library(MASS)
-
------------------------------------
-  **Reading data set**
------------------------------------
-dados <- read.table("hcvhbv_liver.txt", header = TRUE)
-
-head(dados)
-
-attach(dados)
-
------------------------------------
-**Specifying covariate set**
------------------------------------
-qq <- quantile(dados$logc[dados$logc>0])
-
-dd <- qq["50%"] - qq["25%"]
-
-dados$logc <- dados$logc / dd
-
-X <- dados[,c("agegp2", "agegp3", "agegp4", "gender", "smoke", "alcohol")]
-
-p <- ncol(X)
-
-X <- setDT(X)[, .N, by = c(names(X))]
-
-Prob <- X$N / sum(X$N)
-
-X <- cbind(X, Prob)
-
-
+ Same data as before.
+ 
 ----------------------------------------------------------------------------------
 **R functions to estimate NDR e NIR for varying mediator models for AFT**
 -----------------------------------------------------------------------------------
